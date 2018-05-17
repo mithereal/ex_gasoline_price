@@ -10,7 +10,7 @@ defmodule Gasrate do
   ## Examples
 
       iex> Gasrate.fetch_national_avg
-      {}
+       {:ok, %{diesel: 3.137, mid: 3.126, premium: 3.339, regular: 2.933}}
 
   """
   def fetch_national_avg do
@@ -100,10 +100,25 @@ defmodule Gasrate do
       %{diesel: 3.137, mid: 3.126, premium: 3.339, regular: 2.933}
 
   """
-
   def fetch_avg_rates!(state) do
     rates = fetch_avg_rates(state)
     {_, rates} = rates
     rates
   end
+
+  @doc """
+  Fetch National Avg.
+
+  ## Examples
+
+      iex> Gasrate.fetch_national_avg!
+      %{diesel: 3.137, mid: 3.126, premium: 3.339, regular: 2.933}
+
+  """
+  def fetch_national_avg!() do
+    rates = fetch_national_avg()
+    {_, rates} = rates
+    rates
+  end
+
 end
