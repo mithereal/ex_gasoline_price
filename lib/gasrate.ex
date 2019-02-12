@@ -10,9 +10,10 @@ defmodule Gasrate do
   ## Examples
 
       iex> Gasrate.fetch_national_avg
-       {:ok, %{diesel: 3.137, mid: 3.126, premium: 3.339, regular: 2.933}}
+      {:ok, %{diesel: 3.137, mid: 3.126, premium: 3.339, regular: 2.933}}
 
   """
+
   def fetch_national_avg do
     response = HTTPotion.get(@url <> "state-gas-price-averages/")
 
