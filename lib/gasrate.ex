@@ -39,10 +39,11 @@ defmodule Gasrate do
 
   ## Examples
 
-      iex> Gasrate.fetch_avg_rates(state)
+      iex> Gasrate.fetch_avg_rates("AZ")
       {:ok, %{diesel: 3.137, mid: 3.126, premium: 3.339, regular: 2.933}}
 
   """
+
   def fetch_avg_rates(state) do
     response = HTTPotion.get(@url <> "?state=" <> state)
 
@@ -97,7 +98,7 @@ defmodule Gasrate do
 
   ## Examples
 
-      iex> Gasrate.fetch_avg_rates!(state)
+      iex> Gasrate.fetch_avg_rates!("AZ")
       %{diesel: 3.137, mid: 3.126, premium: 3.339, regular: 2.933}
 
   """
