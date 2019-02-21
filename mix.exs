@@ -8,7 +8,7 @@ defmodule Gasrate.MixProject do
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      build_embedded: Mix.env == :prod,
+      build_embedded: Mix.env() == :prod,
       description: description(),
       package: package(),
       elixir: "~> 1.0",
@@ -35,7 +35,7 @@ defmodule Gasrate.MixProject do
       {:inch_ex, ">= 0.0.0", only: :docs}
     ]
   end
-  
+
   defp description() do
     "Fetch Gas Rates from gasprices.aaa.com."
   end
@@ -43,7 +43,7 @@ defmodule Gasrate.MixProject do
   defp package() do
     [
       name: "gasrate",
-      files: ["lib",  "mix.exs", "README*"],
+      files: ["lib", "mix.exs", "README*"],
       maintainers: ["Jason Clark"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/mithereal/elixir-gasrate"}

@@ -1,6 +1,9 @@
 defmodule GasrateTest do
   use ExUnit.Case
-  doctest Gasrate
 
+  test "Fetch National Average" do
+    {status, _} = Gasrate.fetch_national_avg()
 
+    assert status == :ok
+  end
 end

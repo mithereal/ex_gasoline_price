@@ -2,6 +2,11 @@
 
 ** Fetch gas rates from gasprices.aaa.com**
 
+[![Build Status](https://travis-ci.org/mithereal/elixir-gasrate.svg?branch=master)](https://travis-ci.org/mithereal/elixir-gasrate/)
+
+[![Inline docs](http://inch-ci.org/github/mithereal/elixir-gasrate.svg)](http://inch-ci.org/github/mithereal/elixir-gasrate)
+
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
