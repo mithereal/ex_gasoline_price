@@ -23,3 +23,7 @@ script:
 after_script:
    - MIX_ENV=docs mix deps.get
    - MIX_ENV=docs mix inch.report
+
+notifications:
+  webhooks: "https://www.travisbuddy.com/"
+  on_success: never
