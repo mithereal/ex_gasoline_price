@@ -10,7 +10,7 @@ defmodule Gasrate do
   ## Examples
 
       iex> Gasrate.fetch_national_avg
-      {:ok, 2.273}
+      {:ok, _}
 
   """
 
@@ -40,7 +40,7 @@ defmodule Gasrate do
   ## Examples
 
       iex> Gasrate.fetch_avg_rates("AZ")
-      {:ok, %{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}}
+      {:ok, %{diesel: _, mid: _, premium: _, regular: _}}
 
   """
 
@@ -99,7 +99,7 @@ defmodule Gasrate do
   ## Examples
 
       iex> Gasrate.fetch_avg_rates!("AZ")
-      %{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}
+      %{diesel: _, mid: _, premium: _, regular: _}
 
   """
   def fetch_avg_rates!(state) do
@@ -114,7 +114,7 @@ defmodule Gasrate do
   ## Examples
 
       iex> Gasrate.fetch_national_avg!
-      2.273
+      _
 
   """
   def fetch_national_avg!() do
