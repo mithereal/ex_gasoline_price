@@ -3,7 +3,7 @@
 ** Fetch gas rates from gasprices.aaa.com**
 
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/gasrate/)
-[![Hex.pm](https://img.shields.io/hexpm/dt/floki.svg)](https://hex.pm/packages/gasrate)
+[![Hex.pm](https://img.shields.io/hexpm/dt/gasrate.svg)](https://hex.pm/packages/gasrate)
 [![License](https://img.shields.io/hexpm/l/gasrate.svg)](https://github.com/mithereal/ex_gasrate/blob/master/LICENSE)
 [![Last Updated](https://img.shields.io/github/last-commit/mithereal/ex_gasrate.svg)](https://github.com/mithereal/ex_gasrate/commits/master)
 [![Build Status](https://circleci.com/gh/mithereal/ex_gasrate.svg?style=svg)](https://github.com/mithereal/ex_gasrate)
