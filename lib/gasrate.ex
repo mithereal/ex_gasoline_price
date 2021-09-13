@@ -2,7 +2,6 @@ defmodule Gasrate do
   @moduledoc """
   Documentation for Gasrate.
   """
-  @url "https://gasprices.aaa.com/"
 
   @doc """
   Fetch National Avg.
@@ -15,9 +14,11 @@ defmodule Gasrate do
   """
 
   def fetch_national_avg do
-    response = HTTPotion.get(@url <> "state-gas-price-averages/")
+    {_, response} = Gasrate.Http.state_gas_price_averages()
 
     html = response.body
+
+    {:ok, html} = Floki.parse_document(html)
 
     [result] = Floki.find(html, "p.numb")
 
@@ -45,9 +46,11 @@ defmodule Gasrate do
   """
 
   def fetch_avg_rates(state) do
-    response = HTTPotion.get(@url <> "?state=" <> state)
+    {_, response} = Gasrate.Http.fetch_avg_rates(state)
 
     html = response.body
+
+    {:ok, html} = Floki.parse_document(html)
 
     result = Floki.find(html, "table.table-mob")
 
@@ -55,25 +58,20 @@ defmodule Gasrate do
 
     {_, _, avg} = result
 
-    [head, body] = avg
+    [_, body] = avg
 
     {_, _, res} = body
 
-    [current, yesterday, lastweek, lastmonth, lastyear] = res
+    [current, _, _, _, _] = res
 
     {_, _, rate_list} = current
-
-    first = List.first(rate_list)
-
-    {_, _, name_list} = first
-
-    name = List.first(name_list)
 
     newlist = List.delete_at(rate_list, 0)
 
     rates =
       Enum.map(newlist, fn x ->
         {_, _, name_list} = x
+
         rate = List.first(name_list)
 
         rate = String.replace(rate, "$", "")
