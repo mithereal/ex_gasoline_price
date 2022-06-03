@@ -17,7 +17,7 @@ by adding `gasrate` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:gasrate, "~> 0.2.1"}
+    {:gasrate, "~> 0.3.0"}
   ]
 end
 ```
@@ -28,6 +28,17 @@ end
 iex>  Gasrate.fetch_national_avg()
 
 iex>  Gasrate.fetch_avg_rates("AZ")
+```
+
+## Standalone
+
+One can create a standalone app via 
+
+```bash
+MIX_ENV=cli && mix deps.get && mix release
+cp _build/cli/rel/bakeware/gas_rate /usr/local/bin/.
+gas_rate "CA"
+{"diesel":6.754,"mid":6.423,"premium":6.561,"regular":6.246}
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)

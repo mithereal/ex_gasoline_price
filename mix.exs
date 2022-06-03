@@ -2,7 +2,7 @@ defmodule Gasrate.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/mithereal/ex_gasrate.git"
-  @version "0.2.1"
+  @version "0.3.0"
   @app :gas_rate
 
   def project do
@@ -54,6 +54,7 @@ defmodule Gasrate.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       {:floki, "~> 0.31.0"},
       {:tesla, "~> 1.4"},
+      {:jason, "~> 1.2"},
       {:hackney, "~> 1.17"},
       {:ex_doc, "~> 0.14", only: :dev},
       {:inch_ex, ">= 0.0.0", only: :docs},
