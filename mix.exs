@@ -49,7 +49,7 @@ defmodule Gasrate.MixProject do
       {:hackney, "~> 1.17"},
       {:ex_doc, "~> 0.14", only: :dev},
       {:inch_ex, ">= 0.0.0", only: :docs},
-      {:bakeware, path: "../..", runtime: false}
+      {:bakeware, runtime: false}
     ]
   end
 
