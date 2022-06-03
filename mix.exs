@@ -13,7 +13,7 @@ defmodule GasolinePrice.MixProject do
       config_path: "./config/config.exs",
       deps_path: "./deps",
       lockfile: "./mix.lock",
-      elixir: "~> 1.10",
+      elixir: "~> 1.90",
       name: "gasoline_price",
       source_url: @source_url,
       start_permanent: Mix.env() == :prod || Mix.env() == :cli,
