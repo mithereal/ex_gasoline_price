@@ -3,16 +3,17 @@ defmodule Gasrate.MixProject do
 
   @source_url "https://github.com/mithereal/ex_gasrate.git"
   @version "0.2.1"
+  @app :gas_rate
 
   def project do
     [
-      app: :gasrate,
+      app: @app,
       version: @version,
       build_path: "./_build",
       config_path: "./config/config.exs",
       deps_path: "./deps",
       lockfile: "./mix.lock",
-      elixir: "~> 1.9",
+      elixir: "~> 1.10",
       name: "gasrate",
       source_url: @source_url,
       start_permanent: Mix.env() == :prod,
@@ -21,7 +22,9 @@ defmodule Gasrate.MixProject do
       aliases: aliases(),
       description: description(),
       package: package(),
-      elixirc_paths: elixirc_paths(Mix.env())
+      elixirc_paths: elixirc_paths(Mix.env()),
+      releases: [{@app, release()}],
+      preferred_cli_env: [release: :prod]
     ]
   end
 
@@ -31,7 +34,8 @@ defmodule Gasrate.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {Gasrate.Cli, []}
     ]
   end
 
@@ -44,7 +48,8 @@ defmodule Gasrate.MixProject do
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:ex_doc, "~> 0.14", only: :dev},
-      {:inch_ex, ">= 0.0.0", only: :docs}
+      {:inch_ex, ">= 0.0.0", only: :docs},
+      {:bakeware, path: "../..", runtime: false}
     ]
   end
 
@@ -76,6 +81,16 @@ defmodule Gasrate.MixProject do
       canonical: "http://hexdocs.pm/gasrate",
       source_url: @source_url,
       extras: ["README.md"]
+    ]
+  end
+
+  defp release do
+    [
+      overwrite: true,
+      cookie: "#{@app}_cookie",
+      quiet: true,
+      steps: [:assemble, &Bakeware.assemble/1],
+      strip_beams: Mix.env() == :prod
     ]
   end
 end

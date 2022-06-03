@@ -3,6 +3,7 @@ defmodule Gasrate do
   Documentation for Gasrate.
   """
 
+  @spec fetch_national_avg :: {:ok, float}
   @doc """
   Fetch National Avg.
 
