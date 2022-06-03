@@ -1,10 +1,10 @@
 if Mix.env() == :cli do
-  defmodule Gasrate.Cli do
+  defmodule GasolinePrice.Cli do
     use Bakeware.Script
 
     @impl Bakeware.Script
     def main([]) do
-      Gasrate.fetch_national_avg!()
+      GasolinePrice.fetch_national_avg!()
       |> IO.puts()
     end
 
@@ -23,7 +23,7 @@ if Mix.env() == :cli do
     end
 
     defp response([state]) do
-      {status, msg} = Gasrate.fetch_avg_rates(state)
+      {status, msg} = GasolinePrice.fetch_avg_rates(state)
 
       case status do
         :ok -> Jason.encode!(msg)

@@ -1,4 +1,4 @@
-defmodule Gasrate.Http do
+defmodule GasolinePrice.Http do
   @moduledoc false
   use Tesla
 

@@ -1,7 +1,9 @@
-defmodule Gasrate do
+defmodule GasolinePrice do
   @moduledoc """
-  Documentation for Gasrate.
+  Documentation for GasolinePrice.
   """
+
+  alias GasolinePrice.Http
 
   @spec fetch_national_avg :: {:ok, float}
   @doc """
@@ -9,13 +11,13 @@ defmodule Gasrate do
 
   ## Examples
 
-      iex> Gasrate.fetch_national_avg
+      iex> GasolinePrice.fetch_national_avg
       {:ok, 2.273}
 
   """
 
   def fetch_national_avg do
-    {_, response} = Gasrate.Http.state_gas_price_averages()
+    {_, response} = Http.state_gas_price_averages()
 
     html = response.body
 
@@ -41,13 +43,13 @@ defmodule Gasrate do
 
   ## Examples
 
-      iex> Gasrate.fetch_avg_rates("AZ")
+      iex> GasolinePrice.fetch_avg_rates("AZ")
       %{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}
 
   """
 
   def fetch_avg_rates(state) do
-    {_, response} = Gasrate.Http.fetch_avg_rates(state)
+    {_, response} = Http.fetch_avg_rates(state)
 
     html = response.body
 
@@ -97,7 +99,7 @@ defmodule Gasrate do
 
   ## Examples
 
-      iex> Gasrate.fetch_avg_rates!("AZ")
+      iex> GasolinePrice.fetch_avg_rates!("AZ")
       {:ok, %{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}}
 
   """
@@ -112,7 +114,7 @@ defmodule Gasrate do
 
   ## Examples
 
-      iex> Gasrate.fetch_national_avg!
+      iex> GasolinePrice.fetch_national_avg!
       2.273
 
   """

@@ -1,9 +1,9 @@
-defmodule Gasrate.MixProject do
+defmodule GasolinePrice.MixProject do
   use Mix.Project
 
-  @source_url "https://github.com/mithereal/ex_gasrate.git"
+  @source_url "https://github.com/mithereal/ex_gasoline_price.git"
   @version "0.3.0"
-  @app :gas_rate
+  @app :gasoline_price
 
   def project do
     [
@@ -14,7 +14,7 @@ defmodule Gasrate.MixProject do
       deps_path: "./deps",
       lockfile: "./mix.lock",
       elixir: "~> 1.10",
-      name: "gasrate",
+      name: "gasoline_price",
       source_url: @source_url,
       start_permanent: Mix.env() == :prod || Mix.env() == :cli,
       deps: deps(),
@@ -37,7 +37,7 @@ defmodule Gasrate.MixProject do
       true ->
         [
           extra_applications: [:logger],
-          mod: {Gasrate.Cli, []}
+          mod: {GasolinePrice.Cli, []}
         ]
 
       false ->
@@ -63,16 +63,16 @@ defmodule Gasrate.MixProject do
   end
 
   defp description() do
-    "Fetch Gas Rates from gasprices.aaa.com."
+    "Fetch Gasoline Rates from gasprices.aaa.com."
   end
 
   defp package() do
     [
-      name: "gasrate",
+      name: "gasoline_price",
       files: ["lib", "mix.exs", "README*"],
       maintainers: ["Jason Clark"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/mithereal/ex_gasrate"}
+      links: %{"GitHub" => "https://github.com/mithereal/ex_gasoline_price"}
     ]
   end
 
@@ -85,9 +85,9 @@ defmodule Gasrate.MixProject do
   defp docs() do
     [
       main: "readme",
-      name: "Gasrate",
+      name: "Gasoline Price",
       source_ref: "v#{@version}",
-      canonical: "http://hexdocs.pm/gasrate",
+      canonical: "http://hexdocs.pm/gasoline_price",
       source_url: @source_url,
       extras: ["README.md"]
     ]

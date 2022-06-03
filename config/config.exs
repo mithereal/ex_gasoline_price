@@ -10,11 +10,11 @@ import Config
 
 # You can configure your application as:
 #
-#     config :gasrate, key: :value
+#     config :gasolineprice, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:gasrate, :key)
+#     Application.get_env(:gasolineprice, :key)
 #
 # You can also configure a 3rd-party app:
 #
