@@ -16,7 +16,7 @@ defmodule Gasrate.MixProject do
       elixir: "~> 1.10",
       name: "gasrate",
       source_url: @source_url,
-      start_permanent: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod || Mix.env() == :cli,
       deps: deps(),
       docs: docs(),
       aliases: aliases(),
@@ -24,7 +24,7 @@ defmodule Gasrate.MixProject do
       package: package(),
       elixirc_paths: elixirc_paths(Mix.env()),
       releases: [{@app, release()}],
-      preferred_cli_env: [release: :prod]
+      preferred_cli_env: [release: :cli]
     ]
   end
 
@@ -33,10 +33,18 @@ defmodule Gasrate.MixProject do
 
   # Run "mix help compile.app" to learn about applications.
   def application do
-    [
-      extra_applications: [:logger],
-      mod: {Gasrate.Cli, []}
-    ]
+    case Mix.env() == :cli do
+      true ->
+        [
+          extra_applications: [:logger],
+          mod: {Gasrate.Cli, []}
+        ]
+
+      false ->
+        [
+          extra_applications: [:logger]
+        ]
+    end
   end
 
   # Run "mix help deps" to learn about dependencies.
@@ -90,7 +98,7 @@ defmodule Gasrate.MixProject do
       cookie: "#{@app}_cookie",
       quiet: true,
       steps: [:assemble, &Bakeware.assemble/1],
-      strip_beams: Mix.env() == :prod
+      strip_beams: Mix.env() == :cli
     ]
   end
 end
