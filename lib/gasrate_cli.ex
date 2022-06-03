@@ -1,32 +1,34 @@
-defmodule Gasrate.Cli do
-  use Bakeware.Script
+if Mix.env() == :cli do
+  defmodule Gasrate.Cli do
+    use Bakeware.Script
 
-  @impl Bakeware.Script
-  def main([]) do
-    Gasrate.fetch_national_avg!()
-    |> IO.puts()
-  end
+    @impl Bakeware.Script
+    def main([]) do
+      Gasrate.fetch_national_avg!()
+      |> IO.puts()
+    end
 
-  def main(args) do
-    args
-    |> response()
-    |> IO.puts()
-  end
-
-  defp parse_args(args) do
-    {opts, word, _} =
+    def main(args) do
       args
-      |> OptionParser.parse(switches: [fetch_avg_rates: :boolean])
+      |> response()
+      |> IO.puts()
+    end
 
-    {opts, List.to_string(word)}
-  end
+    defp parse_args(args) do
+      {opts, word, _} =
+        args
+        |> OptionParser.parse(switches: [fetch_avg_rates: :boolean])
 
-  defp response([state]) do
-    {status, msg} = Gasrate.fetch_avg_rates(state)
+      {opts, List.to_string(word)}
+    end
 
-    case status do
-      :ok -> Jason.encode!(msg)
-      _ -> "Invalid State Code"
+    defp response([state]) do
+      {status, msg} = Gasrate.fetch_avg_rates(state)
+
+      case status do
+        :ok -> Jason.encode!(msg)
+        _ -> "Invalid State Code"
+      end
     end
   end
 end
