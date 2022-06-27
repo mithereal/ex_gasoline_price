@@ -3,10 +3,10 @@
 ** Fetch gas rates from gasprices.aaa.com**
 
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/gasoline_price/)
-[![Hex.pm](https://img.shields.io/hexpm/dt/gasolineprice.svg)](https://hex.pm/packages/gasoline_price)
-[![License](https://img.shields.io/hexpm/l/gasolineprice.svg)](https://github.com/mithereal/ex_gasoline_price/blob/master/LICENSE)
-[![Last Updated](https://img.shields.io/github/last-commit/mithereal/ex_gasolineprice.svg)](https://github.com/mithereal/ex_gasoline_price/commits/master)
-[![Build Status](https://circleci.com/gh/mithereal/ex_gasolineprice.svg?style=svg)](https://github.com/mithereal/ex_gasoline_price)
+[![Hex.pm](https://img.shields.io/hexpm/dt/gasoline_price.svg)](https://hex.pm/packages/gasoline_price)
+[![License](https://img.shields.io/hexpm/l/gasoline_price.svg)](https://github.com/mithereal/ex_gasoline_price/blob/master/LICENSE)
+[![Last Updated](https://img.shields.io/github/last-commit/mithereal/ex_gasoline_price.svg)](https://github.com/mithereal/ex_gasoline_price/commits/master)
+[![Build Status](https://circleci.com/gh/mithereal/ex_gasoline_price.svg?style=svg)](https://github.com/mithereal/ex_gasoline_price)
 
 
 ## Installation
