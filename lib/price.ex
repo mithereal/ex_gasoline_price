@@ -175,7 +175,6 @@ defmodule GasolinePrice do
           end)
       end)
       |> Enum.map(fn rates ->
-        {name, _, _} = List.first(rates)
 
         rates =
           data =
@@ -189,8 +188,8 @@ defmodule GasolinePrice do
 
     rates =
       case(rate_area) do
-        area -> Keyword.get(rates, area)
         :all -> rates
+        area -> Keyword.get(rates, area)
       end
 
     {:ok, rates}
