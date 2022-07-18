@@ -150,34 +150,31 @@ defmodule GasolinePrice do
 
         [{_, _, newlist}] = List.delete_at(data, 0)
 
-        rates =
-          Enum.map(newlist, fn x ->
-            {_, _, rates} = x
+        Enum.map(newlist, fn x ->
+          {_, _, rates} = x
 
-            {_, _, [type]} = List.first(rates)
+          {_, _, [type]} = List.first(rates)
 
-            rates =
-              List.delete_at(rates, 0)
-              |> Enum.map(fn {_, _, [rate]} ->
-                String.replace(rate, "$", "")
-                |> String.trim()
-                |> String.to_float()
-              end)
+          rates =
+            List.delete_at(rates, 0)
+            |> Enum.map(fn {_, _, [rate]} ->
+              String.replace(rate, "$", "")
+              |> String.trim()
+              |> String.to_float()
+            end)
 
-            rates = %{
-              regular: Enum.at(rates, 0),
-              mid: Enum.at(rates, 1),
-              premium: Enum.at(rates, 2),
-              diesel: Enum.at(rates, 3)
-            }
+          rates = %{
+            regular: Enum.at(rates, 0),
+            mid: Enum.at(rates, 1),
+            premium: Enum.at(rates, 2),
+            diesel: Enum.at(rates, 3)
+          }
 
-            {String.downcase(area), rates, String.downcase(type)}
-          end)
+          {String.downcase(area), rates, String.downcase(type)}
+        end)
       end)
       |> Enum.map(fn rates ->
-
-        rates =
-          data =
+        data =
           Enum.map(rates, fn x ->
             {_, rates, time} = x
             %MetroRates.Period{period: time, rates: rates}
