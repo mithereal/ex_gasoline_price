@@ -128,7 +128,7 @@ defmodule GasolinePrice do
   Fetch Metro Rates.
 
       iex> GasolinePrice.fetch_metro_rates("AZ")
-      [...]
+      {:ok, []}
   """
 
   def fetch_metro_rates(state, rate_area \\ :all) do
