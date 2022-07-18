@@ -177,6 +177,18 @@ defmodule GasolinePrice do
             {String.downcase(area), rates, String.downcase(type)}
           end)
       end)
+      |> Enum.map(fn rates ->
+        {name, _, _} = List.first(rates)
+
+        rates =
+          data =
+          Enum.map(rates, fn x ->
+            {_, rates, time} = x
+            %MetroRates.Period{period: time, rates: rates}
+          end)
+
+        %MetroRates{metro: data}
+      end)
 
     {:ok, rates}
   end

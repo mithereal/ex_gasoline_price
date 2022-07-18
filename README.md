@@ -39,6 +39,9 @@ MIX_ENV=cli && mix deps.get && mix release
 cp _build/cli/rel/bakeware/gasoline_price /usr/local/bin/.
 gasoline_price "CA"
 {"diesel":6.754,"mid":6.423,"premium":6.561,"regular":6.246}
+
+gasoline_price fetch_metro_rates "CA"
+[...]
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
