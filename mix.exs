@@ -2,7 +2,7 @@ defmodule GasolinePrice.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/mithereal/ex_gasoline_price.git"
-  @version "0.3.0"
+  @version "0.3.1"
   @app :gasoline_price
 
   def project do

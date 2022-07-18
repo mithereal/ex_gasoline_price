@@ -17,7 +17,7 @@ by adding `gasolineprice` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:gasoline_price, "~> 0.3.0"}
+    {:gasoline_price, "~> 0.3.1"}
   ]
 end
 ```

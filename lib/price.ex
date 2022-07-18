@@ -127,14 +127,9 @@ defmodule GasolinePrice do
   @doc """
   Fetch Metro Rates.
 
-  ## Examples
-
-      iex> GasolinePrice.fetch_metro_rates("AZ")
-     {:ok,[]}
-
   """
 
-  def fetch_metro_rates(state, area \\ :all) do
+  def fetch_metro_rates(state, rate_area \\ :all) do
     {_, response} = Http.fetch_avg_rates(state)
 
     html = response.body
@@ -189,6 +184,12 @@ defmodule GasolinePrice do
 
         %MetroRates{metro: data}
       end)
+
+    rates =
+      case(rate_area) do
+        area -> Keyword.get(rates, area)
+        :all -> rates
+      end
 
     {:ok, rates}
   end
