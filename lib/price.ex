@@ -177,10 +177,10 @@ defmodule GasolinePrice do
         data =
           Enum.map(rates, fn x ->
             {_, rates, time} = x
-            %MetroRates.Period{period: time, rates: rates}
+            %{period: time, rates: rates}
           end)
 
-        %MetroRates{metro: data}
+        %{metro: data}
       end)
 
     rates =
