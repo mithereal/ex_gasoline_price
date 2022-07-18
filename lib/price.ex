@@ -123,4 +123,61 @@ defmodule GasolinePrice do
     {_, rates} = rates
     rates
   end
+
+  @doc """
+  Fetch Rates.
+
+  ## Examples
+
+      iex> GasolinePrice.fetch_metro_rates("AZ", "Phoenix")
+     [%{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}]
+
+  """
+
+  def fetch_metro_rates(state, area \\ :all) do
+    {_, response} = Http.fetch_avg_rates(state)
+
+    html = response.body
+
+    {:ok, html} = Floki.parse_document(html)
+
+    [{"div", [{"class", "accordion-prices metros-js"}], data}] =
+      Floki.find(html, ".accordion-prices")
+
+     rates =  Enum.chunk_every(data, 2)
+      |> Enum.map(fn [key, values] ->
+        {_, _, [area]} = key
+
+        [{_, _, data}] = Floki.find(values, "table.table-mob")
+
+        [{_, _, newlist}] = List.delete_at(data, 0)
+
+
+        rates =
+          Enum.map(newlist, fn x ->
+            {_, _, rates} = x
+
+            {_, _, [type]} = List.first(rates)
+
+            rates =
+              List.delete_at(rates, 0)
+              |> Enum.map(fn {_, _, [rate]} ->
+                String.replace(rate, "$", "")
+                |> String.trim()
+                |> String.to_float()
+              end)
+
+            rates = %{
+              regular: Enum.at(rates, 0),
+              mid: Enum.at(rates, 1),
+              premium: Enum.at(rates, 2),
+              diesel: Enum.at(rates, 3)
+            }
+
+            {area, rates, type}
+          end)
+      end)
+
+    {:ok, rates}
+  end
 end
