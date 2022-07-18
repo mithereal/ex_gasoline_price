@@ -100,7 +100,7 @@ defmodule GasolinePrice do
   ## Examples
 
       iex> GasolinePrice.fetch_avg_rates!("AZ")
-      {:ok, %{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}}
+       %{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}
 
   """
   def fetch_avg_rates!(state) do
@@ -125,12 +125,12 @@ defmodule GasolinePrice do
   end
 
   @doc """
-  Fetch Rates.
+  Fetch Metro Rates.
 
   ## Examples
 
-      iex> GasolinePrice.fetch_metro_rates("AZ", "Phoenix")
-     [%{diesel: 2.89, mid: 2.669, premium: 2.877, regular: 2.447}]
+      iex> GasolinePrice.fetch_metro_rates("AZ")
+     {:ok,[]}
 
   """
 
@@ -144,14 +144,14 @@ defmodule GasolinePrice do
     [{"div", [{"class", "accordion-prices metros-js"}], data}] =
       Floki.find(html, ".accordion-prices")
 
-     rates =  Enum.chunk_every(data, 2)
+    rates =
+      Enum.chunk_every(data, 2)
       |> Enum.map(fn [key, values] ->
         {_, _, [area]} = key
 
         [{_, _, data}] = Floki.find(values, "table.table-mob")
 
         [{_, _, newlist}] = List.delete_at(data, 0)
-
 
         rates =
           Enum.map(newlist, fn x ->
@@ -174,7 +174,7 @@ defmodule GasolinePrice do
               diesel: Enum.at(rates, 3)
             }
 
-            {area, rates, type}
+            {String.downcase(area), rates, String.downcase(type)}
           end)
       end)
 
