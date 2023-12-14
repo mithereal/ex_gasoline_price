@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/hexpm/l/gasoline_price.svg)](https://github.com/mithereal/ex_gasoline_price/blob/master/LICENSE)
 [![Last Updated](https://img.shields.io/github/last-commit/mithereal/ex_gasoline_price.svg)](https://github.com/mithereal/ex_gasoline_price/commits/master)
 [![Build Status](https://circleci.com/gh/mithereal/ex_gasoline_price.svg?style=svg)](https://github.com/mithereal/ex_gasoline_price)
-
+[![Coverage Status](https://coveralls.io/repos/github/mithereal/ex_gasoline_price/badge.svg?branch=main)](https://coveralls.io/github/mithereal/ex_gasoline_price?branch=main)
 
 ## Installation
 
